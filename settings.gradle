@@ -1,2 +1,6 @@
-include ':app'
-rootProject.name='Revolut'
+rootProject.name = 'Revolut'
+
+include ':app',
+        ':threading',
+        ':rateslib',
+        ':core'

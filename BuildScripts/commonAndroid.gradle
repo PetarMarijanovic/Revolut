@@ -1,0 +1,48 @@
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            versionNameSuffix "d"
+
+            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false
+
+            tasks.withType(Test) { enabled = false }
+
+            aaptOptions.cruncherEnabled = false // Disable png crunching
+        }
+
+        release {
+            versionNameSuffix "r"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        staging {
+            initWith release
+
+            versionNameSuffix "s"
+
+            debuggable true
+            tasks.withType(Test) { enabled = false }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation kotlinStdLib
+}

@@ -1,0 +1,15 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/BuildScripts/commonAndroid.gradle"
+
+dependencies {
+    implementation rxJava
+    implementation rxAndroid
+
+    implementation koin
+
+    implementation timber
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

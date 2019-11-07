@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "68130044714",
+    "firebase_url": "https://petarrevolut.firebaseio.com",
+    "project_id": "petarrevolut",
+    "storage_bucket": "petarrevolut.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68130044714:android:2f6dd1fcb2c08d5c7d3c53",
+        "android_client_info": {
+          "package_name": "com.petarmarijanovic.revolut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68130044714-d85gavcq9l0apc2ijo665okoupg1thf1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqszf5TXxzqRUBViEonVdozO5CQIptJbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68130044714-d85gavcq9l0apc2ijo665okoupg1thf1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
