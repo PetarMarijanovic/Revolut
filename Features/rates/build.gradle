@@ -13,7 +13,6 @@ dependencies {
 
     implementation koin
 
-    // Support Libs
     implementation appCompat
     implementation constraintLayout
     implementation recyclerView
