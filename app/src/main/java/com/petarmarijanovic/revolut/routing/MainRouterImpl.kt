@@ -6,6 +6,7 @@ import com.petarmarijanovic.revolut.R
 import com.petarmarijanovic.revolut.navigation.router.MainRouter
 import com.petarmarijanovic.revolut.navigation.util.ActivityUtils
 import com.petarmarijanovic.revolut.navigation.util.inTransactionAndAddToBackStack
+import com.petarmarijanovic.revolut.nextscreen.ui.NextScreenFragment
 import com.petarmarijanovic.revolut.rates.ui.RatesFragment
 
 private const val LAST_FRAGMENT = 0
@@ -19,14 +20,7 @@ class MainRouterImpl(
 ) : MainRouter {
 
     override fun showRates() {
-
         fragmentManager.inTransactionAndAddToBackStack(RatesFragment.TAG) {
-            setCustomAnimations(
-                R.anim.fragment_fade_in_and_translate,
-                R.anim.fragment_fade_out_and_scale,
-                R.anim.fragment_fade_in_and_scale,
-                R.anim.fragment_fade_out_and_translate
-            )
             add(
                 MAIN_CONTAINER_ID,
                 RatesFragment.newInstance(),
@@ -36,7 +30,19 @@ class MainRouterImpl(
     }
 
     override fun showNextScreen() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        fragmentManager.inTransactionAndAddToBackStack(NextScreenFragment.TAG) {
+            setCustomAnimations(
+                R.anim.fragment_right_enter,
+                R.anim.nothing,
+                R.anim.nothing,
+                R.anim.fragment_right_exit
+            )
+            add(
+                MAIN_CONTAINER_ID,
+                NextScreenFragment.newInstance(),
+                NextScreenFragment.TAG
+            )
+        }
     }
 
     override fun goBack() {

@@ -4,6 +4,7 @@ import android.app.Application
 import com.petarmarijanovic.revolut.core.appconfig.AppConfig
 import com.petarmarijanovic.revolut.di.AppModule
 import com.petarmarijanovic.revolut.navigation.di.NavigationModule
+import com.petarmarijanovic.revolut.nextscreen.di.NextScreenModule
 import com.petarmarijanovic.revolut.rates.di.RatesModule
 import com.petarmarijanovic.revolut.rateslib.di.RatesLibModule
 import com.petarmarijanovic.revolut.threading.di.ThreadingModule
@@ -36,6 +37,7 @@ class RevolutApplication : Application() {
     )
 
     private val featureModules: List<Module> = listOf(
-        RatesModule
+        RatesModule,
+        NextScreenModule
     )
 }

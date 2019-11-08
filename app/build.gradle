@@ -11,6 +11,7 @@ dependencies {
     implementation project(':navigation')
     implementation project(':rateslib')
     implementation project(':rates')
+    implementation project(':nextscreen')
 
     implementation appCompat
     implementation ktx

@@ -43,6 +43,8 @@ class RatesFragment : BaseFragment<RatesViewState>(), RatesContract.View {
             setHasFixedSize(true)
             adapter = ratesAdapter
         }
+
+        next_screen.setOnClickListener { presenter.openNextScreen() }
     }
 
     override fun render(viewState: RatesViewState) = ratesAdapter.submitList(viewState.viewModels)
