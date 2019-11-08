@@ -6,11 +6,11 @@ dependencies {
 
     implementation rxJava
 
+    implementation koin
+
     implementation retrofit
     implementation retrofitRxJava
     implementation retrofitGsonConverter
-
-    implementation koin
 
     implementation gson
 }

@@ -3,6 +3,8 @@ package com.petarmarijanovic.revolut
 import android.app.Application
 import com.petarmarijanovic.revolut.core.appconfig.AppConfig
 import com.petarmarijanovic.revolut.di.AppModule
+import com.petarmarijanovic.revolut.navigation.di.NavigationModule
+import com.petarmarijanovic.revolut.rates.di.RatesModule
 import com.petarmarijanovic.revolut.rateslib.di.RatesLibModule
 import com.petarmarijanovic.revolut.threading.di.ThreadingModule
 import org.koin.android.ext.android.get
@@ -25,7 +27,8 @@ class RevolutApplication : Application() {
 
     private val coreModules: List<Module> = listOf(
         AppModule,
-        ThreadingModule
+        ThreadingModule,
+        NavigationModule
     )
 
     private val libModules: List<Module> = listOf(
@@ -33,5 +36,6 @@ class RevolutApplication : Application() {
     )
 
     private val featureModules: List<Module> = listOf(
+        RatesModule
     )
 }

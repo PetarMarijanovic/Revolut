@@ -1,0 +1,14 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/BuildScripts/commonAndroid.gradle"
+
+dependencies {
+
+    // Support Libs
+    implementation appCompat
+
+    // Timber
+    implementation timber
+
+    // DI
+    implementation koin
+}

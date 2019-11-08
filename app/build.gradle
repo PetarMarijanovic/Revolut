@@ -8,7 +8,9 @@ dependencies {
 
     implementation project(':core')
     implementation project(':threading')
+    implementation project(':navigation')
     implementation project(':rateslib')
+    implementation project(':rates')
 
     implementation appCompat
     implementation ktx

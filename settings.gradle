@@ -1,6 +1,9 @@
 rootProject.name = 'Revolut'
 
 include ':app',
+        ':coreui',
+        ':navigation',
+        ':rates',
         ':threading',
         ':rateslib',
         ':core'

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Rates</string>
+    <string name="rates_title">Rates</string>
+    <string name="rate_value_hint">0</string>
+</resources>
