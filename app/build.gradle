@@ -6,12 +6,12 @@ android.defaultConfig.applicationId "com.petarmarijanovic.revolut"
 
 dependencies {
 
-    implementation project(':core')
-    implementation project(':threading')
-    implementation project(':navigation')
-    implementation project(':rateslib')
-    implementation project(':rates')
-    implementation project(':nextscreen')
+    implementation project(':corelibs:core')
+    implementation project(':corelibs:threading')
+    implementation project(':corelibs:navigation')
+    implementation project(':libraries:rateslib')
+    implementation project(':features:rates')
+    implementation project(':features:nextscreen')
 
     implementation appCompat
     implementation ktx

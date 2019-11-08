@@ -1,0 +1,16 @@
+apply from: "$rootDir/BuildScripts/commonKotlin.gradle"
+
+dependencies {
+
+    implementation project(':corelibs:core')
+
+    implementation rxJava
+
+    implementation koin
+
+    implementation retrofit
+    implementation retrofitRxJava
+    implementation retrofitGsonConverter
+
+    implementation gson
+}

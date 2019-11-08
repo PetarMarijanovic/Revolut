@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/BuildScripts/commonAndroid.gradle"
+
+dependencies {
+
+    // Our modules
+    implementation project(':corelibs:core')
+    implementation project(':corelibs:navigation')
+
+    // Support Libs
+    implementation appCompat
+    implementation recyclerView
+
+    // ViewModel
+    implementation lifecycleExtensions
+
+    // DI
+    implementation koin
+    implementation koinAndroidScope
+
+    // Timber
+    implementation timber
+
+    // RxJava
+    implementation rxAndroid
+    implementation rxJava
+}

@@ -1,10 +1,17 @@
 rootProject.name = 'Revolut'
 
-include ':app',
-        ':nextscreen',
-        ':coreui',
-        ':navigation',
-        ':rates',
-        ':threading',
-        ':rateslib',
-        ':core'
+// Applications
+include ':app'
+
+// CoreLibraries
+include ':corelibs:core',
+        ':corelibs:coreui',
+        ':corelibs:navigation',
+        ':corelibs:threading'
+
+// Libraries
+include ':libraries:rateslib'
+
+// Features
+include ':features:nextscreen',
+        ':features:rates'
