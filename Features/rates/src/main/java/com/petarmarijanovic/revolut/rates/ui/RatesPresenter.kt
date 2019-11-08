@@ -4,6 +4,8 @@ import com.petarmarijanovic.revolut.coreui.base.BasePresenter
 import com.petarmarijanovic.revolut.navigation.router.MainRouter
 import com.petarmarijanovic.revolut.rates.model.RateWithValue
 import com.petarmarijanovic.revolut.rates.model.RatesViewModel
+import com.petarmarijanovic.revolut.rates.resources.getIconRes
+import com.petarmarijanovic.revolut.rates.resources.getStringRes
 import com.petarmarijanovic.revolut.rateslib.model.Rate
 import com.petarmarijanovic.revolut.rateslib.usecase.QueryRefreshableRates
 import io.reactivex.processors.PublishProcessor
@@ -35,7 +37,15 @@ class RatesPresenter(
                                 viewState.viewModels =
 
                                     mutableListOf<RatesViewModel>().apply {
-                                        add(RatesViewModel(true, 0, it.rate, "name1", it.value))
+                                        add(
+                                            RatesViewModel(
+                                                true,
+                                                getIconRes(it.rate),
+                                                it.rate,
+                                                getStringRes(it.rate),
+                                                it.value
+                                            )
+                                        )
 
                                         viewState.viewModels
                                             .forEach { viewModel ->
@@ -56,9 +66,9 @@ class RatesPresenter(
                                             add(
                                                 RatesViewModel(
                                                     false,
-                                                    0,
+                                                    getIconRes(entry.key),
                                                     entry.key,
-                                                    "name1",
+                                                    getStringRes(entry.key),
                                                     entry.value * it.value
                                                 )
                                             )

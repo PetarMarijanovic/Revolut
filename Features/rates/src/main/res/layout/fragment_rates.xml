@@ -19,7 +19,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="Next Screen" />
+        android:layout_marginTop="@dimen/rates_smallMargin"
+        android:layout_marginEnd="@dimen/rates_smallMargin"
+        android:text="@string/rates_next_screen" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"

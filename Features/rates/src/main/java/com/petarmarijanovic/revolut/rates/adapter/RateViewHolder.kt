@@ -45,8 +45,9 @@ class RateViewHolder(
         viewModel = ratesViewModel
 
         with(itemView) {
+            icon.setImageResource(ratesViewModel.icon)
             rate.text = ratesViewModel.rate.name
-            name.text = ratesViewModel.name
+            name.setText(ratesViewModel.name)
 
             value.setText(toDecimalText(ratesViewModel))
         }

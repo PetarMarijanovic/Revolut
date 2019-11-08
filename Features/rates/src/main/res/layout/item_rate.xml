@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
-    android:padding="16dp">
+    android:padding="@dimen/common_padding">
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="@dimen/rates_icon_size"
         android:layout_height="@dimen/rates_icon_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_european_union" />
 
     <TextView
         android:id="@+id/rate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_padding"
         android:gravity="start"
         android:textColor="@color/dark_gray"
         android:textSize="@dimen/rates_rate_textSize"
@@ -24,19 +27,22 @@
         app:layout_constraintEnd_toStartOf="@id/value"
         app:layout_constraintStart_toEndOf="@id/icon"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="EUR" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_padding"
         android:gravity="start"
         android:textColor="@color/light_gray"
         android:textSize="@dimen/rates_name_textSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/value"
         app:layout_constraintStart_toEndOf="@id/icon"
-        app:layout_constraintTop_toBottomOf="@id/rate" />
+        app:layout_constraintTop_toBottomOf="@id/rate"
+        tools:text="Euro" />
 
     <EditText
         android:id="@+id/value"
