@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.petarmarijanovic.revolut.coreui.base.BaseFragment
 import com.petarmarijanovic.revolut.coreui.util.hideKeyboard
+import com.petarmarijanovic.revolut.coreui.util.show
 import com.petarmarijanovic.revolut.rates.R
 import com.petarmarijanovic.revolut.rates.adapter.RatesAdapter
 import com.petarmarijanovic.revolut.rates.di.RATES_SCOPE
@@ -51,5 +52,9 @@ class RatesFragment : BaseFragment<RatesViewState>(), RatesContract.View {
         }
     }
 
-    override fun render(viewState: RatesViewState) = ratesAdapter.submitList(viewState.viewModels)
+    override fun render(viewState: RatesViewState) {
+        recyclerview.show(viewState.viewModels.isNotEmpty())
+        progress_bar.show(viewState.viewModels.isEmpty())
+        ratesAdapter.submitList(viewState.viewModels)
+    }
 }
