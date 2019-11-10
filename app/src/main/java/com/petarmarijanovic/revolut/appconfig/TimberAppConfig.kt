@@ -35,7 +35,7 @@ class DebugTree : Timber.DebugTree() {
     }
 
     override fun createStackElementTag(element: StackTraceElement) =
-        "(${element.fileName}:${element.lineNumber})#${element.methodName}"
+            "(${element.fileName}:${element.lineNumber})#${element.methodName}"
 }
 
 /** Logs everything above [minPriorityLevel] to Crashlytics */

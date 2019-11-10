@@ -19,7 +19,7 @@ import io.reactivex.processors.FlowableProcessor
 import timber.log.Timber
 
 abstract class BasePresenter<in View, ViewState : Any, RouterType : Router> :
-    ViewPresenter<View, ViewState> {
+        ViewPresenter<View, ViewState> {
 
     lateinit var mainThreadScheduler: Scheduler
     lateinit var backgroundScheduler: Scheduler
@@ -27,8 +27,7 @@ abstract class BasePresenter<in View, ViewState : Any, RouterType : Router> :
     lateinit var routingActionsDispatcher: RoutingActionsDispatcher<RouterType>
 
     private lateinit var viewState: ViewState
-    private val viewStateProcessor: FlowableProcessor<ViewState> =
-        BehaviorProcessor.create<ViewState>().toSerialized()
+    private val viewStateProcessor: FlowableProcessor<ViewState> = BehaviorProcessor.create<ViewState>().toSerialized()
 
     private val disposables: CompositeDisposable = CompositeDisposable()
     private var viewObservingDisposable: Disposable = Disposables.disposed()
@@ -82,11 +81,11 @@ abstract class BasePresenter<in View, ViewState : Any, RouterType : Router> :
     protected open fun observeView(view: View): Disposable = Disposables.disposed()
 
     final override fun viewState(): Flowable<ViewState> =
-        viewStateProcessor
-            .compose(viewStateThrottle())
-            .onBackpressureLatest()
-            .observeOn(mainThreadScheduler)
-            .subscribeOn(backgroundScheduler)
+            viewStateProcessor
+                    .compose(viewStateThrottle())
+                    .onBackpressureLatest()
+                    .observeOn(mainThreadScheduler)
+                    .subscribeOn(backgroundScheduler)
 
     protected open fun viewStateThrottle() = FlowableTransformer<ViewState, ViewState> { it }
 
@@ -120,7 +119,7 @@ abstract class BasePresenter<in View, ViewState : Any, RouterType : Router> :
      * @param routingAction RoutingAction to dispatch
      */
     protected fun dispatchRoutingAction(routingAction: (RouterType) -> Unit) =
-        routingActionsDispatcher.dispatch(routingAction)
+            routingActionsDispatcher.dispatch(routingAction)
 
     /**
      * Invoke to route to another screen. If another routing action with the same [actionId] is already queued, the old one will be removed.
@@ -129,8 +128,8 @@ abstract class BasePresenter<in View, ViewState : Any, RouterType : Router> :
      * @param routingAction RoutingAction to dispatch
      */
     protected fun dispatchDistinctRoutingAction(
-        actionId: String,
-        routingAction: (RouterType) -> Unit
+            actionId: String,
+            routingAction: (RouterType) -> Unit
     ) = routingActionsDispatcher.dispatchDistinct(actionId, routingAction)
 
     override fun back() = dispatchRoutingAction { router -> router.goBack() }
@@ -153,7 +152,7 @@ abstract class BasePresenter<in View, ViewState : Any, RouterType : Router> :
 
     @WorkerThread
     protected fun refreshView() =
-        backgroundScheduler.scheduleDirect { viewStateProcessor.onNext(viewState) }
+            backgroundScheduler.scheduleDirect { viewStateProcessor.onNext(viewState) }
 
     protected fun <T> fromState(consumer: ViewState.() -> T): T = viewState.consumer()
 
@@ -186,12 +185,12 @@ abstract class BasePresenter<in View, ViewState : Any, RouterType : Router> :
         }
 
         private fun subscribe() =
-            either.fold({
-                it.subscribeOn(backgroundScheduler)
-                    .subscribe(this@BasePresenter::mutateViewState, this@BasePresenter::logError)
-            }, {
-                it.subscribeOn(backgroundScheduler)
-                    .subscribe(Functions.EMPTY_ACTION, Consumer(this@BasePresenter::logWarn))
-            })
+                either.fold({
+                    it.subscribeOn(backgroundScheduler)
+                            .subscribe(this@BasePresenter::mutateViewState, this@BasePresenter::logError)
+                }, {
+                    it.subscribeOn(backgroundScheduler)
+                            .subscribe(Functions.EMPTY_ACTION, Consumer(this@BasePresenter::logWarn))
+                })
     }
 }

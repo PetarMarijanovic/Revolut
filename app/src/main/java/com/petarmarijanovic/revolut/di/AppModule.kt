@@ -15,8 +15,8 @@ val AppModule = module {
 
     single {
         listOf(
-            TimberAppConfig(),
-            CrashlyticsAppConfig(androidApplication())
+                TimberAppConfig(),
+                CrashlyticsAppConfig(androidApplication())
         )
     }
 

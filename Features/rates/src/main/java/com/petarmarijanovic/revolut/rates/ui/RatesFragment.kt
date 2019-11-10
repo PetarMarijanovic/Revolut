@@ -28,12 +28,7 @@ class RatesFragment : BaseFragment<RatesViewState>(), RatesContract.View {
 
     private val presenter: RatesContract.Presenter by scopedInject()
 
-    private val ratesAdapter: RatesAdapter by scopedInject(parameters = {
-        parametersOf(
-            LayoutInflater.from(context),
-            presenter::updateRate
-        )
-    })
+    private val ratesAdapter: RatesAdapter by scopedInject(parameters = { parametersOf(LayoutInflater.from(context), presenter::updateRate) })
 
     override fun getLayoutResource(): Int = LAYOUT_RESOURCE
     override fun getScopeName(): String = RATES_SCOPE

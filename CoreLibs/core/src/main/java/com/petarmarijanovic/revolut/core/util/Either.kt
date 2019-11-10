@@ -30,8 +30,8 @@ sealed class Either<out Left, out Right> {
      * @return the results of applying the function
      */
     inline fun <Result> fold(ifLeft: (Left) -> Result, ifRight: (Right) -> Result): Result =
-        when (this) {
-            is Either.Left -> ifLeft(value)
-            is Either.Right -> ifRight(value)
-        }
+            when (this) {
+                is Either.Left -> ifLeft(value)
+                is Either.Right -> ifRight(value)
+            }
 }

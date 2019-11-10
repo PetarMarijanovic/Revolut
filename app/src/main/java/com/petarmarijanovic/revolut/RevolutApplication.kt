@@ -27,17 +27,17 @@ class RevolutApplication : Application() {
     }
 
     private val coreModules: List<Module> = listOf(
-        AppModule,
-        ThreadingModule,
-        NavigationModule
+            AppModule,
+            ThreadingModule,
+            NavigationModule
     )
 
     private val libModules: List<Module> = listOf(
-        RatesLibModule
+            RatesLibModule
     )
 
     private val featureModules: List<Module> = listOf(
-        RatesModule,
-        NextScreenModule
+            RatesModule,
+            NextScreenModule
     )
 }

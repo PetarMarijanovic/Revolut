@@ -21,7 +21,7 @@ abstract class BaseFragment<ViewState> : Fragment(), BaseView, BackPropagatingFr
     val scopeRetainer by lazy {
         ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-                ScopeRetainer(getKoin()) as T
+                    ScopeRetainer(getKoin()) as T
         }).get(ScopeRetainer::class.java)
     }
 
@@ -44,12 +44,8 @@ abstract class BaseFragment<ViewState> : Fragment(), BaseView, BackPropagatingFr
         scopeRetainer.addDestroyable(presenter)
     }
 
-    final override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(getLayoutResource(), container, false)
+    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            inflater.inflate(getLayoutResource(), container, false)
 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,11 +68,8 @@ abstract class BaseFragment<ViewState> : Fragment(), BaseView, BackPropagatingFr
      * @param qualifier - optional bean qualifier
      * @param parameters - optional injection parameters
      */
-    protected inline fun <reified T> scopedInject(
-        qualifier: Qualifier? = null,
-        noinline parameters: ParametersDefinition? = null
-    ): Lazy<T> =
-        lazy { scopeRetainer.getScope().get<T>(qualifier = qualifier, parameters = parameters) }
+    protected inline fun <reified T> scopedInject(qualifier: Qualifier? = null, noinline parameters: ParametersDefinition? = null): Lazy<T> =
+            lazy { scopeRetainer.getScope().get<T>(qualifier = qualifier, parameters = parameters) }
 
     /**
      * Override to initialise view

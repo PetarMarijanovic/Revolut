@@ -25,12 +25,7 @@ class RatesPresenter(
     override fun initialViewState(): RatesViewState = RatesViewState(emptyList())
 
     override fun onStart() {
-        query(
-            rateWithValue
-                .switchMap {
-                    queryRefreshableRates(it.rate).map { rates -> toViewStateAction(rates, it) }
-                }
-        )
+        query(rateWithValue.switchMap { queryRefreshableRates(it.rate).map { rates -> toViewStateAction(rates, it) } })
     }
 
     private fun toViewStateAction(rates: Rates, selected: RateWithValue): (RatesViewState) -> Unit =
@@ -47,7 +42,8 @@ class RatesPresenter(
                     viewState.viewModels
                         .forEach { viewModel ->
                             if (viewModel.rate != selected.rate) {
-                                mutableRates.remove(viewModel.rate)?.let { value -> add(viewModel.copy(value = value * selected.value, isSelected = false)) }
+                                mutableRates.remove(viewModel.rate)
+                                    ?.let { value -> add(viewModel.copy(value = value * selected.value, isSelected = false)) }
                             }
                         }
 
@@ -58,8 +54,7 @@ class RatesPresenter(
                 }
         }
 
-    override fun updateRate(rateWithValue: RateWithValue) =
-        rateWithValuePublisher.onNext(rateWithValue)
+    override fun updateRate(rateWithValue: RateWithValue) = rateWithValuePublisher.onNext(rateWithValue)
 
     override fun openNextScreen() = dispatchRoutingAction(MainRouter::showNextScreen)
 }

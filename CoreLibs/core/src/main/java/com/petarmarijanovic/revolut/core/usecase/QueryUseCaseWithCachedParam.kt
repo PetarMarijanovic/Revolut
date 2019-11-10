@@ -18,9 +18,9 @@ abstract class QueryUseCaseWithCachedParam<Param, Result> : QueryUseCaseWithPara
         flowableCache[param]?.let { return it }
 
         val flowable = createQuery(param)
-            .doFinally { removeFromCache(param) }
-            .replay(1)
-            .refCount(1, TimeUnit.SECONDS, Schedulers.io())
+                .doFinally { removeFromCache(param) }
+                .replay(1)
+                .refCount(1, TimeUnit.SECONDS, Schedulers.io())
 
         flowableCache[param] = flowable
         return flowable

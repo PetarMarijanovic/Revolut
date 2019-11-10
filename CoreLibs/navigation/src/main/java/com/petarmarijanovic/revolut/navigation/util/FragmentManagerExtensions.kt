@@ -11,10 +11,7 @@ fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransa
 }
 
 /** Must be called from main thread. */
-fun FragmentManager.inTransactionAndAddToBackStack(
-    name: String? = null,
-    func: FragmentTransaction.() -> FragmentTransaction
-) {
+fun FragmentManager.inTransactionAndAddToBackStack(name: String? = null, func: FragmentTransaction.() -> FragmentTransaction) {
     ensureMainThread()
     beginTransaction().func().addToBackStack(name).commit()
     executePendingTransactions()
